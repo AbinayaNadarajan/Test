@@ -9,6 +9,7 @@ public class Login extends Account {
 	public static void main(String args[]) {
 		PayeeDetails p2 = new PayeeDetails();
 		Account f = new Account();
+		Account f2= new Account();
 		System.out.println("*********WELCOME TO BANKING*********");
 		System.out.println("Enter your login name:");
 		s = new Scanner(System.in);
@@ -29,11 +30,25 @@ public class Login extends Account {
 				int option = s.nextInt();
 				switch (option) {
 				case 1:
-					f.deposit();
-					break;
+					try {
+						f.deposit();
+						break;
+						
+					} catch (Exception e) {
+						System.out.println("invalid amount");
+						f2.deposit();
+						 break;
+					}
+
 				case 2:
+					try{
 					f.withdraw();
 					break;
+					}catch(Exception e){
+						System.out.println("invalid amount");
+						f2.withdraw();
+						break;
+					}
 				case 3:
 					f.balance();
 					break;
